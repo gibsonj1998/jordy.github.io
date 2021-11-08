@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!--
+    Free for personal and commercial use under the CCA 3.0 License (html5up.net/license)
+-->
+
+<html>
+    <head>
+        <title>Jordan's Porfolio and Knowldegde Share</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width", initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="/Users/jordangibson/icantcode/portfolio Site/assets/css/articles.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    </head>
+
+    <!--Pre-load the site-->
+    <body class="is-preload"></body>
+
+        <!--Wrapper-->
+        <div id="wrapper" class="fade-in">
+            <div class="header">
+            
+            <!--Intro/Title Card-->
+                <div id="intro">
+                    <h3>Jordan's Portfolio and Knowledge Share</h3>
+                    <p>A showcase of my personal projects and IT skills</p>
+                </div>
+            
+            </div>           
+
+            <!--Homepage Navigation Bar-->
+            
+                <!--Page Links-->
+                <div class="topnav">
+                    <a href="index.html">About Jordan</a>
+                    <a href="/projects.html">My Projects</a>
+                </div>    
+                <!--Social Links-->
+
+                <!--
+                    #KEEPING THIS OUT FOR NOW#
+
+                    <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/jordanpgibson/" target="null" class="icon brands fa-linkedin"><span class="label">linkedin</span></a></li>
+                </ul>
+            </nav>
+        
+        -->
+
+        
+        </div>
+        <div class=content>
+                <!--Creating a Div for the actual content. THis will be wher the article content is-->
+                <div class="article">
+                    <h5>Configure Macbook Air w/ M1 Chip as a P2S Client with Azure Virtual Network Gateway</h5>
+                    <hr>
+        
+                    <!--Intro Section of Article-->
+                    <p>
+                        I get the chance to work with a lot of IT professionals that take advantage of the Point-to-Site VPN offering 
+                        on the Azure Virtual Network Gateway to connect their remote users into their Azure Virtual Networks. And a 
+                        lot of the time these remote end-users are working with MacOS, which can be scary for some of our native Microsoft 
+                        Administrators.
+                    </p>
+                    <p>
+                        While helping these clients configure their point-to-site VPNs for their remote users we can run into some issues. 
+                        So as I recently acquired Apple's new M1 MacBook Air, I thought it appropriate to go through the process of setting 
+                        up the machine as a client on my Azure VPN and see if I am able to reach the resources in my Virtual Network. 
+                    </p>
+                    <br>
+                    <!--Requirements List-->
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>M1 MacBook Air running MacOS Big Sur (v11.5.2)</li>
+                        <li>Root and Child Certificate w/ full chain</li>
+                        <li>Azure Virtual Network</li>
+                        <li>Azure Virtual Network Gateway (Non-Basic SKU)</li>
+                        <li>Azure VM for connectivity testing</li>
+                    </ul>
+        
+                    <!--Provision the azure resources-->
+        
+                    <h4>Provision the Azure Resources</h4>
+                    <p>
+                        Start by configuring the Azure Virtual Network Gateway as a P2S VPN. 
+                        This can be done in the portal using the following steps:
+                        <br>
+                        1. Go to the Azure Portal and at the top search for "Virtual Network Gateway" and then click "Create"
+                        <br>
+                        2. You will then be prompted to configure the actual gateway itself. 
+                        <br>
+                        <img src="images/createvng.png" alt="Create VNG" height=50% width=50% />
+                        <br>
+                        Note: Deploying this resource can take up to 50 minutes to complete.
+                        <br>
+                        <br>
+                        3. Once the resource deployment has completed. Navigate to the blade for your new Azure VNG and 
+                        click on the "Point-to-Site Configuration" tab under "Settings".
+                        <br>
+                        <img src="images/configp2s.png" alt="Configure P2S VPN settings" height=50% width=50% />
+                        <br>
+                        <b>Address Pool: </b>The IP address range that P2S Clients will retrieve addresses from. 
+                        <br>
+                        <b>Tunnel Type:</b> This will be the type of Secure tunnel you want to create. When using MacOS Devices 
+                        as P2S clients, IKEv2 must be selected. 
+                        <br>
+                        <b>Authentication Type:</b> How you want the clients to be able to authenticate with the Azure P2S VPN. 
+                        In this case, we are using a self-signed certificate. 
+                        <br>
+                        <b>Root Certificates:</b> Here we will paste the actual root certificate data into Azure so that the gateway can 
+                        talk to clients using the certificate for authentication. 
+                        <br>
+                        <br>
+                        <i>If you do not already have a certificate and want to learn more about configuring your own, please click <a href="#">here.</a> </i>
+                        <br>
+                        <br>
+                        4. Once the above settings have been configured, click "Save" at the top of the blade and then once that is complete,
+                        click "Download VPN Client" and then make that downloaded zip accessible to your MacBook Air device. Alternatively you
+                        could download this directly onto the MAC by navigating to the portal from that machine. The file we will be dealing 
+                        with from the downloaded zip folder will be the "generic" VPN config file which will contain the FQDN for the VPN server. 
+                    </p>
+        
+                    <h4>Configuring the M1 MacBook Air as a P2S Client</h4>
+                    <p>
+                        1. First we will want to verify that we have the certificate that we need on our M1 MacBook Air. Upon booting the machine, 
+                        navigate to the "Keychain Access" application and then click on "Certificates" 
+                        <br>
+                        <img src="images/grabcert.png" alt="Obtain the client cert" height=50% width=50% />
+                        <br>
+                        There you should be able to see your Child cert that you imported onto the machine. Instructions for importing the cert can 
+                        be found <a href="#">here</a>, as well as how to obtain the cert in the first place.
+                        <br>
+                        <br>
+                        2. Once the cert is located, open up the "Finder" Application and locate the location of your VPN config folder that was 
+                        downloaded from the portal. Navigate to the file w/ the title "Generic", and in the XML find the value for the "VPN Server". 
+                        This will be the FQDN of the VPN that we will use to connect. 
+                        <br>
+                        <img src="images/obtaingwurl.png" alt="get the VPN Server URL" height=50% width=50% />
+                        <br>
+                        3. Once the above information has been collected we can navigate to our "Network Preferences" in the top right of the menu bar 
+                        on our Mac.
+                        <br>
+                        4. Once in th network preferences, you may need to add a new interface of type, VPN. Then Select "VPN" for the interface, "IKEv2" 
+                        for the VPN Type, and then provide a name for the VPN connection and click "Create".
+                        <br>
+                        <img src="images/addvpnint.png" alt="Configure the VPN interface in the Network settings" height=50% width=50% />
+                        <br>
+                        Once the new VPN interface is created, we can populate the connection with our values. 
+                        <br>
+                        <br>
+                        5. The "Server Address" and the "Remote ID" are going to be the VPN Server FQDN that we were able to collect from the generic VPN 
+                        config file. Once you have those copied in, then click on "Authentication Settings".
+                        <br>
+                        <img src="images/configintsettings.png" alt="Configure the VPN interface settings" height=50% width=50% />
+                        <br>
+                        <br>
+                        6. This will open the following window, select the Authentication Settings as "Certificate" and then click select and navigate 
+                        to the location of your child cert and click "OK". If you are using an older version the instructions can be different. Microsoft
+                        has documented these nuances <a href="https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#create-vpn-client-profile">here.</a>
+                        <br>
+                        <img src="images/authsettings.png" alt="configure the authentication settings for the VPN connection" height=50% width=50% />
+                        <br>
+                        <br>
+                        7. Then populate the "Local ID" with the common name of the Certificate that you are using.
+                        <br>
+                        <img src="images/localid.png" alt="Use the common name of the cert for the local ID in the VPN connection" height=50% width=50% />
+                        <br>
+                        8. CLick Connect!
+                        <br>
+                        You may be prompted for the machines user password, enter that in and then the window should change to show your status as Connected. 
+                        <br>
+                        <img src="images/connectedstatus.png" alt="Here you can see the details and status of the P2S connection" height=50% width=50% />
+                        <br>
+                        This shows how long you have been connected and what IP address was allocated from the P2S pool. You can further confirm 
+                        this by navigating to your Azure Portal where you will be able to see the allocated IP addresses under the Point-to-Site 
+                        configuration tab on the Virtual Network Gateway.
+                        <br>
+                        <br>
+                        Your P2S VPN and client are now functional. You can also check in the Azure portal to see that the Azure Virtual Network 
+                        Gateway is tracking your new user.
+                        <br>
+                        <img src="images/portalp2sstatus.png" alt="see the P2S status in the Azure Portal" height=50% width=50% />
+                        <br>
+                    </p>
+        
+                    <h4>Test connectivity to the Azure Virtual Network from the P2S Client. </h4>
+                    <p>
+                        <ul style="list-style-type: none;padding:1%;">
+                            <li>1. Now that we have confirmed that we are connected to the Azure P2S VPN, we need to be sure that we can actually 
+                                reach our other resources in the Virtual Network. 
+                            </li>
+                            <li>2. To test, I have spun up a Windows Virtual Machine in Azure and will attempt to send an ICMP echo against it. </li>
+                            <li><img src="images/pingtest.png" alt="ICMP test to Azure Virtual Machine" height=50% width=50%/></li>
+                            <li>We are getting an ICMP echo reply so it looks to me like we are good to go. </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>    
+</html>
