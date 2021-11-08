@@ -13,7 +13,7 @@ While helping these clients configure their point-to-site VPNs for their remote 
 ```markdown
 REQUIREMENTS
 
-# Note: The P2S VPN will use a certificate generated in PowerShell on a Windows Machine. You can see how I did this here
+# The P2S VPN will use a certificate generated in PowerShell on a Windows Machine.
 
 - M1 MacBook Air running MacOS Big Sur (v11.5.2)
 - Root and Child Certificate w/ full chain
@@ -22,12 +22,8 @@ REQUIREMENTS
 - Azure VM for connectivity testing
 - Azure Virtual Network Gateway (Non-Basic SKU)!
 
-
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
+# Provisioning Azure Resources
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
@@ -38,3 +34,8 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+
+**Bold** and _Italic_ and `Code` text
+
+[Link](url) and ![Image](src)
