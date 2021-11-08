@@ -11,17 +11,18 @@ I get the chance to work with a lot of IT professionals that take advantage of t
 While helping these clients configure their point-to-site VPNs for their remote users we can run into some issues. So as I recently acquired Apple's new M1 MacBook Air, I thought it appropriate to go through the process of setting up the machine as a client on my Azure VPN and see if I am able to reach the resources in my Virtual Network. 
                     
 ```markdown
-Syntax highlighted code block
+REQUIREMENTS
 
-# Header 1
-## Header 2
-### Header 3
+# Note: The P2S VPN will use a certificate generated in PowerShell on a Windows Machine. You can see how I did this here
 
-- Bulleted
-- List
+- M1 MacBook Air running MacOS Big Sur (v11.5.2)
+- Root and Child Certificate w/ full chain
+ Azure Resources:
+- Azure Virtual Network 
+- Azure VM for connectivity testing
+- Azure Virtual Network Gateway (Non-Basic SKU)!
 
-1. Numbered
-2. List
+
 
 **Bold** and _Italic_ and `Code` text
 
