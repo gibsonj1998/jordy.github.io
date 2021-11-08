@@ -1,8 +1,8 @@
-## Welcome to GitHub Pages
+## Welcome to Jordy's Portfolio and Knowledge Share
 
-You can use the [editor on GitHub](https://github.com/gibsonj1998/jordy.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+I hope to bring lots of great content to you in the fields of IT networking and the cloud with a focus in the Azure Ecosystem.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This site will also showcase some of my personal projects and experience throughout my IT career. 
 
 ### Markdown
 
