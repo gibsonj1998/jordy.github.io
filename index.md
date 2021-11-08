@@ -27,8 +27,8 @@ REQUIREMENTS
 Start by configuring the Azure Virtual Network Gateway as a P2S VPN. This can be done in the portal using the following steps:
 1. Go to the Azure Portal and at the top search for "Virtual Network Gateway" and then click "Create"
 2. You will then be prompted to configure the actual gateway itself.
-![Image](createvng.png)
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![Image](https://github.com/gibsonj1998/jordy.github.io/blob/b35b50ac4bc37587dbc7888a1d477d8853232eb9/createvng.png)
+
 
 ### Jekyll Themes
 
