@@ -1,10 +1,10 @@
-## Welcome to Jordy's Portfolio and Knowledge Share
+# Welcome to Jordy's Portfolio and Knowledge Share
 
 I hope to bring lots of great content to you in the fields of IT networking and the cloud with a focus in the Azure Ecosystem.
 
 This site will also showcase some of my personal projects and experience throughout my IT career. 
 
-### Configure Macbook Air w/ M1 Chip as a P2S Client with Azure Virtual Network Gateway
+## Configure Macbook Air w/ M1 Chip as a P2S Client with Azure Virtual Network Gateway
 
 I get the chance to work with a lot of IT professionals that take advantage of the Point-to-Site VPN offering on the Azure Virtual Network Gateway to connect their remote users into their Azure Virtual Networks. And a lot of the time these remote end-users are working with MacOS, which can be scary for some of our native Microsoft Administrators.
 
@@ -23,7 +23,7 @@ REQUIREMENTS
 - Azure Virtual Network Gateway (Non-Basic SKU)
 
 ```
-# Provisioning Azure Resources
+### Provisioning Azure Resources
 Start by configuring the Azure Virtual Network Gateway as a P2S VPN. This can be done in the portal using the following steps:
 1. Go to the Azure Portal and at the top search for "Virtual Network Gateway" and then click "Create"
 2. You will then be prompted to configure the actual gateway itself.
